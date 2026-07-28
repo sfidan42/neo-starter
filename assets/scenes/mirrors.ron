@@ -1,0 +1,71 @@
+(
+    version: 1,
+    entities: [
+        (
+            name: Some(("World")),
+            mesh: Some((source: Ground, framing: r#None, cast_shadows: false, snow_ground: true)),
+            light: Some((azimuth: 35.0, elevation: 55.0, intensity: 1.0, shadow_softness: 10.0)),
+            ground: Some(()),
+        ),
+        (
+            name: Some(("Camera")),
+            transform: Some((translation: (-21.466436, 8.093355, -23.975325), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
+            camera: Some((yaw: 1.5100065, pitch: -0.22500238)),
+        ),
+        (
+            name: Some(("pine forest")),
+            transform: Some((translation: (0.0, 0.0, 0.0), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
+            mesh: Some((source: Path("assets/models/pine_forest.glb"), framing: r#None, cast_shadows: true, snow_ground: true)),
+        ),
+        (
+            name: Some(("mirror 9 mb copy")),
+            transform: Some((translation: (0.0, -20.0, 25.0), rotation: (0.00006903117, 0.99978685, -0.020365857, 0.0033886856), scale: (0.5, 0.5, 0.5))),
+            mesh: Some((source: Path("assets/models/mirror_9_mb.glb"), framing: r#None, cast_shadows: true, snow_ground: true)),
+        ),
+        (
+            name: Some(("mirror 9 mb")),
+            transform: Some((translation: (0.0, -20.0, -25.0), rotation: (0.0, 0.0, 0.0, 1.0), scale: (0.5, 0.5, 0.5))),
+            mesh: Some((source: Path("assets/models/mirror_9_mb.glb"), framing: r#None, cast_shadows: true, snow_ground: true)),
+        ),
+    ],
+    world: Some((
+        sun: (
+            azimuth: 35.0,
+            elevation: 55.0,
+            intensity: 1.0,
+            shadow_softness: 10.0,
+        ),
+        sky: (
+            haze: 1.0,
+            ap_enabled: true,
+        ),
+        moon: (
+            azimuth: 215.0,
+            elevation: 40.0,
+        ),
+        clouds: (
+            enabled: true,
+            coverage: 0.5,
+            cloud_type: 0.4,
+            altitude: 1.5,
+            thickness: 3.0,
+            wind_speed: 4.0,
+            wind_dir: 20.0,
+        ),
+        weather: (
+            rain: 0.0,
+            snow: 0.0,
+            gustiness: 0.35,
+            radius: 30.0,
+            density: 1.2,
+            size_scale: 1.0,
+            opacity: 1.0,
+            wetness: 0.0,
+            puddles: 0.0,
+            snow_cover: 0.0,
+            snow_haze: 0.4,
+            transition_s: 8.0,
+            time_scale: 1.0,
+        ),
+    )),
+)

@@ -1,0 +1,20 @@
+(
+    version: 1,
+    entities: [
+        (
+            name: Some(("Sponza")),
+            transform: Some((
+                translation: (0.0, 0.0, 0.0),
+                rotation: (0.0, 0.0, 0.0, 1.0),
+                scale: (1.0, 1.0, 1.0),
+            )),
+            mesh: Some((
+                source: Path("assets/models/sponza.glb"),
+                framing: r#None,
+                cast_shadows: true,
+                snow_ground: true,
+            )),
+            node: Some(0),
+        ),
+    ],
+)

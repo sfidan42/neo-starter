@@ -1,0 +1,24 @@
+// Neo render configuration — loaded at boot; delete this file (or any
+// field) to fall back to the built-in defaults shown here. Values outside
+// sane ranges are clamped with a warning. Shader-compiled constants
+// (cascade count, punctual map resolution, cluster grid shape) are NOT
+// here — they require a rebuild by design.
+(
+    version: 1,
+    shadow: (
+        near: 0.1,           // nearest shadowed distance (m)
+        far: 80.0,           // farthest shadowed distance (m)
+        caster_backup: 40.0, // extra depth toward the light per cascade (m)
+        cascade_dim: 2048,   // cascade map resolution; 4096 = finer contact
+                             // detail at 4x the rasterization cost (softness
+                             // is world-space and does NOT depend on this)
+    ),
+    punctual: (
+        atlas_layers: 16,       // spot = 1 layer, point = 6
+        max_shadowed_lights: 4, // per-frame shadow budget
+    ),
+    cluster: (
+        near: 0.1, // froxel grid depth range (m)
+        far: 80.0,
+    ),
+)

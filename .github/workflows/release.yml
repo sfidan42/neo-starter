@@ -1,0 +1,37 @@
+# Push a vX.Y.Z tag to pack the content and publish it as a release. Neo
+# resolves the newest tag <= its own engine version and downloads both assets.
+# Content is Git LFS, so `lfs: true` is required — without it the packer would
+# stage pointer stubs (it refuses to).
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+jobs:
+  starter:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - name: Install zstd
+        run: sudo apt-get update && sudo apt-get install -y zstd
+
+      - name: Pack starter archive
+        run: bash packaging/pack_starter.sh
+
+      - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" \
+            target/neo-starter.tar.zst target/neo-starter.manifest.ron \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "neo-starter $GITHUB_REF_NAME" \
+            --generate-notes

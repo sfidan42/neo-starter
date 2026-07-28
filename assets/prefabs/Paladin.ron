@@ -1,0 +1,38 @@
+(
+    version: 1,
+    entities: [
+        (
+            name: Some(("Paladin")),
+            transform: Some((
+                translation: (-9.7982645, 1.0, -0.3766703),
+                rotation: (0.0, -0.6888619, 0.0, 0.7248926),
+                scale: (1.0, 1.0, 1.0),
+            )),
+            mesh: Some((
+                source: Path("assets/models/Paladin"),
+                framing: Unit,
+                cast_shadows: true,
+                snow_ground: true,
+            )),
+            anim: Some((
+                clip: 24,
+                time: 197.93922,
+                playing: true,
+                speed: 1.0,
+                looping: true,
+            )),
+            script: Some((
+                path: "assets/scripts/paladin_controller.rhai",
+            )),
+        ),
+        (
+            name: Some(("Follow Cam")),
+            parent: Some(0),
+            chase: Some((
+                distance: 3.5,
+                height: 1.4,
+                fov_y: 0.9773844,
+            )),
+        ),
+    ],
+)

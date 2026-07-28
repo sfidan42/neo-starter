@@ -1,0 +1,66 @@
+(
+    version: 1,
+    entities: [
+        (
+            name: Some(("World")),
+            mesh: Some((source: Ground, framing: r#None, cast_shadows: false, snow_ground: true)),
+            light: Some((azimuth: 293.4, elevation: 90.0, intensity: 1.0, shadow_softness: 2.5)),
+            ground: Some(()),
+        ),
+        (
+            name: Some(("Camera")),
+            transform: Some((translation: (-19.630922, 30.644724, 14.629018), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
+            camera: Some((yaw: 7.3700213, pitch: -0.940001)),
+        ),
+        (
+            name: Some(("burg clam v2")),
+            transform: Some((translation: (0.0, 0.0, 0.0), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
+            mesh: Some((source: Path("assets/models/burg_clam_v2.glb"), framing: r#None, cast_shadows: true, snow_ground: true)),
+        ),
+        (
+            name: Some(("metalic ball")),
+            transform: Some((translation: (-6.570119, 1.8069388, -0.50378585), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
+            mesh: Some((source: Path("assets/models/metalic_ball.glb"), framing: r#None, cast_shadows: true, snow_ground: false)),
+        ),
+    ],
+    world: Some((
+        sun: (
+            azimuth: 293.4,
+            elevation: 90.0,
+            intensity: 1.0,
+            shadow_softness: 2.5,
+        ),
+        sky: (
+            haze: 1.0,
+            ap_enabled: true,
+        ),
+        moon: (
+            azimuth: 215.0,
+            elevation: 40.0,
+        ),
+        clouds: (
+            enabled: true,
+            coverage: 0.6322719,
+            cloud_type: 0.43306798,
+            altitude: 1.5,
+            thickness: 3.0,
+            wind_speed: 0.0,
+            wind_dir: 79.2,
+        ),
+        weather: (
+            rain: 0.0,
+            snow: 25.0,
+            gustiness: 0.35,
+            radius: 30.0,
+            density: 1.2,
+            size_scale: 1.066136,
+            opacity: 1.099204,
+            wetness: 0.0,
+            puddles: 0.0,
+            snow_cover: 1.0,
+            snow_haze: 0.4,
+            transition_s: 8.0,
+            time_scale: 1.0,
+        ),
+    )),
+)
