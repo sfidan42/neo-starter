@@ -26,36 +26,30 @@ fn update(dt) {
     let run  = 4.5;
     let turn = 0.18;   // how fast he swings to face travel (0..1 per frame)
 
-    // WASD intent projected onto the camera's horizontal basis.
-    let mx = input_x();          // A/D -> -1 / +1  (screen left / right)
-    let mz = input_z();          // W/S -> +1 / -1  (into / out of screen)
-    let dx = cam_fwd_x() * mz + cam_right_x() * mx;
-    let dz = cam_fwd_z() * mz + cam_right_z() * mx;
-    let mag = (dx * dx + dz * dz).sqrt();
+    // WASD intent projected onto the camera's horizontal basis: W/S runs into
+    // the view, A/D across it.
+    let m = move_axis();
+    let dir = cam_fwd() * m.z + cam_right() * m.x;
 
-    if mag < 0.001 {
+    if dir.length() < 0.001 {
         play("sword and shield idle");
         return;
     }
+    // Normalised, so diagonals aren't faster than the cardinals.
+    dir = dir.normalize();
 
-    // Normalise the heading so diagonals aren't faster.
-    let inv = 1.0 / mag;
-    dx *= inv;
-    dz *= inv;
-
-    let running = key_down("shift");
     let spd = walk;
     let clip = "sword and shield walk";
-    if running {
+    if key_down("shift") {
         spd = run;
         clip = "sword and shield run";
     }
 
-    translate(dx * spd * dt, 0.0, dz * spd * dt);
+    translate(dir * (spd * dt));
     // Turn to face travel. init()'s set_forward("+z") declared where his
     // front is, so the heading goes in un-negated — face_move aims the
     // DECLARED forward along it, whatever axis the art was exported on.
-    face_move(dx, dz, turn);
+    face_move(dir, turn);
 
     play(clip);
 }

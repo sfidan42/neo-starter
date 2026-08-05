@@ -7,23 +7,21 @@
 // returns the already collision-clamped, smoothed boom length; this script
 // only composes the pose from it and the orbit angles.
 //
-// The camera follows its Parent (the object it's a child of): target_x/y/z()
-// is that object's world position, rename- and reorder-proof. distance/height
-// are the camera's Chase knobs and fov its Camera lens — all edited in the
-// inspector, read here.
+// The camera follows its Parent (the object it's a child of): target() is that
+// object's world position, rename- and reorder-proof. distance/height are the
+// camera's Chase knobs and fov its Camera lens — all edited in the inspector,
+// read here.
 
 fn update(dt) {
-    let d  = spring_arm(chase_distance());   // host: boom after wall + smoothing
-    let cp = cos(orbit_pitch());
+    let d = spring_arm(chase_distance());    // host: boom after wall + smoothing
     // Boom direction out behind the orbit yaw/pitch (unit): +yaw sweeps around
-    // the target, +pitch lifts and looks down. Matches the old Rust `dir`.
-    let dx = sin(orbit_yaw()) * cp;
-    let dy = sin(orbit_pitch());
-    let dz = cos(orbit_yaw()) * cp;
-    let px = target_x();
-    let py = target_y() + chase_height();    // pivot: height above the target
-    let pz = target_z();
-    set_eye(px + dx * d, py + dy * d, pz + dz * d);
-    look_at(px, py, pz);
+    // the target, +pitch lifts and looks down.
+    let cp = cos(orbit_pitch());
+    let boom = vec3(sin(orbit_yaw()) * cp, sin(orbit_pitch()), cos(orbit_yaw()) * cp);
+    // Pivot: the target, lifted by the camera's own authored height.
+    let t = target();
+    let pivot = t.with_y(t.y + chase_height());
+    set_eye(pivot + boom * d);
+    look_at(pivot);
     set_fov(lens_fov());
 }

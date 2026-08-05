@@ -8,23 +8,17 @@
 
 fn update(dt) {
     let speed = 4.0;                         // metres / second (× dt below)
-    let cp = cos(orbit_pitch());
     // Aim (unit): where the mouse points the camera.
-    let fx = sin(orbit_yaw()) * cp;
-    let fy = sin(orbit_pitch());
-    let fz = cos(orbit_yaw()) * cp;
-    // Horizontal right of the aim (fwd × up), for strafing.
-    let rx =  fz;
-    let rz = -fx;
+    let cp = cos(orbit_pitch());
+    let fwd = vec3(sin(orbit_yaw()) * cp, sin(orbit_pitch()), cos(orbit_yaw()) * cp);
+    // Horizontal right of the aim, for strafing.
+    let right = vec3(fwd.z, 0.0, -fwd.x);
     // WASD in the aim's ground frame; Shift doubles the speed.
     let s = speed * dt * (if key_down("shift") { 2.0 } else { 1.0 });
-    let f = input_z() * s;                    // W/S along the aim
-    let r = input_x() * s;                    // A/D strafe
-    let ex = pos_x() + fx * f + rx * r;
-    let ey = pos_y() + fy * f;                // vertical follows the aim's pitch
-    let ez = pos_z() + fz * f + rz * r;
-    set_pos(ex, ey, ez);
-    set_eye(ex, ey, ez);
-    look_at(ex + fx, ey + fy, ez + fz);
+    let m = move_axis();
+    let eye = pos() + fwd * (m.z * s) + right * (m.x * s);
+    set_pos(eye);
+    set_eye(eye);
+    look_at(eye + fwd);
     set_fov(lens_fov());
 }
