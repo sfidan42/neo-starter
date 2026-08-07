@@ -9,11 +9,6 @@
             snow: Some((bits: 3)),
         ),
         (
-            name: Some(("Camera")),
-            transform: Some((translation: (11.118498, 3.997689, 1.7250947), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
-            camera: Some((yaw: 5.2805653, pitch: -0.33507746)),
-        ),
-        (
             name: Some(("MetallicBall A")),
             transform: Some((translation: (2.0, 2.0, -2.0), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
             mesh: Some((source: Path("assets/models/metalic_ball.glb"), framing: r#None, cast_shadows: true, snow_ground: true)),
