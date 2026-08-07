@@ -2,12 +2,6 @@
     version: 1,
     entities: [
         (
-            name: Some(("World")),
-            mesh: Some((source: Ground, framing: r#None, cast_shadows: false, snow_ground: true)),
-            light: Some((azimuth: 80.0, elevation: 55.0, intensity: 1.0, shadow_softness: 2.5)),
-            ground: Some(()),
-        ),
-        (
             name: Some(("Camera")),
             transform: Some((translation: (27.229765, 18.40992, 21.766745), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
             camera: Some((yaw: -6.945023, pitch: -0.74499947)),
@@ -19,16 +13,14 @@
         (
             name: Some(("obj1_1")),
             transform: Some((translation: (0.0, 0.0, 0.0), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 0.9999999, 0.9999999))),
-            parent: Some(2),
+            parent: Some(1),
             mesh: Some((source: Path("assets/models/pine_forest.glb"), framing: r#None, cast_shadows: true, snow_ground: true, part: Some(4))),
-            snow: Some((bits: 3)),
         ),
         (
             name: Some(("pine1_0")),
             transform: Some((translation: (0.0, 0.0, 0.0), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 0.9999999, 0.9999999))),
-            parent: Some(2),
+            parent: Some(1),
             mesh: Some((source: Path("assets/models/pine_forest.glb"), framing: r#None, cast_shadows: true, snow_ground: true, part: Some(7))),
-            snow: Some((bits: 1)),
         ),
     ],
     world: Some((
@@ -54,6 +46,7 @@
             thickness: 3.0,
             wind_speed: 0.0,
             wind_dir: 20.0,
+            temp_c: 5.0,
         ),
         weather: (
             rain: 0.0,
@@ -67,8 +60,20 @@
             puddles: 0.0,
             snow_cover: 1.0,
             snow_haze: 0.4,
+            snow_fill_s: 30.0,
+            snow_shed_m: 2.5,
+            snow_depth: 1.0,
+            pack_age_h: 0.0,
             transition_s: 8.0,
             time_scale: 600.0,
         ),
+        present: Some([
+            Sun,
+            Moon,
+            Sky,
+            Clouds,
+            Snow,
+            Rain,
+        ]),
     )),
 )

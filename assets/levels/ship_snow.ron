@@ -3,26 +3,26 @@
     entities: [
         (
             name: Some(("Camera")),
-            transform: Some((translation: (44.986122, 42.111797, -52.86817), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
-            camera: Some((yaw: -10.292989, pitch: 0.14250033)),
+            transform: Some((translation: (42.453262, 47.866463, -56.566967), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
+            camera: Some((yaw: -10.1380005, pitch: -0.74)),
         ),
         (
             name: Some(("car1")),
             transform: Some((translation: (-180.08882, 42.538857, 25.09689), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
             mesh: Some((source: Path("assets/models/vehicle_blue_train_bentley.glb"), framing: r#None, cast_shadows: true, snow_ground: false)),
-            anim: Some((clip: 0, time: 371.24182, playing: true, speed: 1.0, looping: true)),
+            anim: Some((clip: 0, time: 376.93262, playing: true, speed: 1.0, looping: true)),
         ),
         (
             name: Some(("car2")),
             transform: Some((translation: (-176.79099, 42.538857, 25.09689), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
             mesh: Some((source: Path("assets/models/vehicle_blue_train_bentley.glb"), framing: r#None, cast_shadows: true, snow_ground: false)),
-            anim: Some((clip: 0, time: 371.24182, playing: true, speed: 1.0, looping: true)),
+            anim: Some((clip: 0, time: 376.93262, playing: true, speed: 1.0, looping: true)),
         ),
         (
             name: Some(("car3")),
             transform: Some((translation: (-172.64272, 42.538857, 25.09689), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
             mesh: Some((source: Path("assets/models/vehicle_blue_train_bentley.glb"), framing: r#None, cast_shadows: true, snow_ground: false)),
-            anim: Some((clip: 0, time: 371.24182, playing: true, speed: 1.0, looping: true)),
+            anim: Some((clip: 0, time: 376.93262, playing: true, speed: 1.0, looping: true)),
         ),
         (
             name: Some(("uss enterprise cvn-65 aircraft carrier")),
@@ -33,16 +33,16 @@
             name: Some(("car1")),
             transform: Some((translation: (0.0, 42.542957, 0.0), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
             mesh: Some((source: Path("assets/models/vehicle_blue_train_bentley.glb"), framing: r#None, cast_shadows: true, snow_ground: false)),
-            anim: Some((clip: 0, time: 365.05328, playing: true, speed: 1.0, looping: true)),
+            anim: Some((clip: 0, time: 370.74408, playing: true, speed: 1.0, looping: true)),
             prefab_instance: Some((source: "assets/prefabs/car1.ron")),
         ),
     ],
     world: Some((
         sun: (
-            azimuth: 80.0,
-            elevation: 90.0,
+            azimuth: 35.0,
+            elevation: 55.0,
             intensity: 1.0,
-            shadow_softness: 2.5,
+            shadow_softness: 10.0,
         ),
         sky: (
             haze: 1.0,
@@ -60,6 +60,7 @@
             thickness: 3.0,
             wind_speed: 0.0,
             wind_dir: 0.0,
+            temp_c: 5.0,
         ),
         weather: (
             rain: 0.0,
@@ -76,6 +77,7 @@
             snow_fill_s: 30.0,
             snow_shed_m: 2.5,
             snow_depth: 1.0,
+            pack_age_h: 0.0,
             transition_s: 0.5,
             time_scale: 1.0,
         ),

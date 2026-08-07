@@ -1,96 +1,109 @@
 // Third-person, camera-relative character controller for the Paladin.
 //
-// He is a physical body, not a moved transform: give him a Character
-// (right-click him in the Level tree -> Add -> Character) and this steers the
-// motor rather than teleporting him. He accelerates because his feet push on
-// the ground, he stops when he walks into a wall, and he stays on whatever he
-// is standing on. Without a Character he simply does not move — walk() has
-// nothing to push.
+// He is moved by the SIMULATION, not by being put somewhere. `walk()` asks
+// his motor to push in a direction and the physics decides what actually
+// happens — so he is stopped by walls, slowed by slopes, and pulled down
+// by gravity like anything else with weight.
 //
-// The two callbacks do different jobs, on different clocks:
+// That last one is why this script is shaped the way it is. An earlier
+// version called `translate()` every frame, which writes his transform
+// directly: while a key was held he was teleported to a new position each
+// frame and gravity had nothing to say about it, and the moment the key
+// came up the teleporting stopped and he dropped. He only fell when you
+// let go. Movement that overwrites a position cannot coexist with physics
+// that wants to own it.
 //
-//   fixed_update(dt)  once per 1/60 s simulation step. Pushing goes here, so
-//                     the same push means the same thing at 30 fps and 144.
-//   update(dt)        once per frame. Looking at things goes here — the turn
-//                     and the animation, which are about what he LOOKS like
-//                     and should be as smooth as the display allows.
+// The split below follows from that:
+//
+//   fixed_update  — asking to move. Runs on the simulation's own clock, so
+//                   a push means the same thing at any frame rate.
+//   update        — how he LOOKS: which way he is facing, which clip is
+//                   playing. Every frame, because that is what is drawn.
+//
+// The camera is a Chase child that the mouse orbits; WASD is read in that
+// camera's ground frame, and he turns to face wherever he actually moves.
+// Hold Shift to run, Space to jump.
 //
 // Edit the numbers below in the Viewport's Script tab and hit Save — it
-// hot-reloads live while Play is running. (Rhai functions can't see top-level
-// consts, so the tunables live inside each function.)
+// hot-reloads live while Play is running. (Rhai functions can't see
+// top-level consts, so the tunables live inside the functions.)
 
 fn init() {
     // Mixamo art faces +Z (the engine's convention is -Z). Declare it once:
-    // face_move/move_local and the chase camera then steer his visual front.
+    // face_move and the chase camera then steer his visual front.
     // (The inspector's Transform > forward picker records the same thing.)
     set_forward("+z");
-    // The Mixamo clips carry root motion on the hips (they slide forward then
-    // snap back on the loop). Hold that bone in place so the simulation's
-    // movement owns the travelling. Name it once here — the engine guesses
-    // no bones.
+    // The Mixamo clips carry root motion on the hips (they slide forward
+    // then snap back on the loop). Hold that bone in place so the motor
+    // owns the travelling. Name it once here — the engine guesses no bones.
     discard_root_motion("Hips");
     play("sword and shield idle");
 }
 
-// Where WASD is asking to go, in world XZ: the camera's ground frame, so W is
-// always "into the view". Zero-length when nothing is held.
-fn wish() {
+// Where WASD points, in the camera's ground frame. Zero length means no
+// input at all, which is a real answer: `fixed_update` passes it straight
+// to walk() to mean "stop", and `update` reads it as "play idle".
+fn wish_dir() {
     let m = move_axis();
     let dir = cam_fwd() * m.z + cam_right() * m.x;
     if dir.length() < 0.001 {
-        return vec3(0.0, 0.0, 0.0);
+        // Exactly zero, not merely small — this is what `fixed_update`
+        // hands to walk() to mean "stop".
+        return dir * 0.0;
     }
     // Normalised, so diagonals aren't faster than the cardinals.
-    let d = dir.normalize();
-    return vec3(d.x, 0.0, d.z);
+    return dir.normalize();
 }
 
 fn fixed_update(dt) {
-    let stroll = 0.45;   // fraction of the motor's top speed when not running
+    // A fraction of the motor's own max_speed, so "walking" and "running"
+    // are relative to what the character is capable of rather than two
+    // more numbers to keep in step with it. NOT named `walk` — that is the
+    // function being called below, and a local of the same name shadows it.
+    let strolling = 0.45;
+    let sprinting = 1.0;
 
-    let dir = wish();
-    // Walking is a full-speed request scaled by the length of what is asked
-    // for: hold Shift and he asks for all of it, otherwise a fraction. The
-    // motor turns that into a force his legs and the ground can both supply,
-    // which is why he does not reach top speed instantly and cannot reach it
-    // at all on ice.
+    let effort = strolling;
     if key_down("shift") {
-        walk(dir);
-    } else {
-        walk(dir * stroll);
+        effort = sprinting;
     }
-    // Jump only lands if he is standing on something — the motor checks, so
-    // this can ask freely.
+
+    // ALWAYS steer — including with no keys down, where `wish_dir()` is
+    // zero and this means "come to a stop".
+    //
+    // Returning early on no input looks tidy and is wrong. The engine
+    // leaves an unsteered body ALONE rather than braking it, deliberately,
+    // so that a script which only occasionally steers does not fight
+    // whatever else is pushing the thing. A frame that says nothing
+    // therefore leaves the last push standing, and he slides on at full
+    // speed with the idle animation playing. Saying "zero" every frame is
+    // the difference between letting go and never having pressed.
+    //
+    // Push, don't place: gravity keeps the vertical the whole time, which
+    // is the entire point of going through the motor.
+    walk(wish_dir() * effort);
+
     if key_down("space") {
         jump();
     }
 }
 
 fn update(dt) {
-    let turn = 0.18;   // how fast he swings to face travel (0..1 per frame)
+    let turn = 0.18; // how fast he swings to face travel (0..1 per frame)
 
-    // Face where he is actually GOING, not where the stick is pointing: the
-    // two differ when he is sliding along a wall, and the body is the honest
-    // answer. Below a crawl there is no travel direction to face.
-    let raw = velocity();
-    let v = vec3(raw.x, 0.0, raw.z);
-    if v.length() > 0.2 {
-        // init()'s set_forward("+z") declared where his front is, so the
-        // heading goes in un-negated — face_move aims the DECLARED forward
-        // along it, whatever axis the art was exported on.
-        face_move(v, turn);
+    let dir = wish_dir();
+    if dir.length() < 0.001 {
+        play("sword and shield idle");
+        return;
     }
+    // Turn to face travel. init()'s set_forward("+z") declared where his
+    // front is, so the heading goes in un-negated — face_move aims the
+    // DECLARED forward along it, whatever axis the art was exported on.
+    face_move(dir, turn);
 
-    // The clip follows the speed he is really moving at, so walking into a
-    // wall stops the legs too.
-    let speed = v.length();
-    if !grounded() {
-        play("sword and shield idle");
-    } else if speed > 3.0 {
-        play("sword and shield run");
-    } else if speed > 0.2 {
-        play("sword and shield walk");
-    } else {
-        play("sword and shield idle");
+    let clip = "sword and shield walk";
+    if key_down("shift") {
+        clip = "sword and shield run";
     }
+    play(clip);
 }

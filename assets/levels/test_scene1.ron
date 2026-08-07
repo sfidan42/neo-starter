@@ -3,8 +3,8 @@
     entities: [
         (
             name: Some(("Camera")),
-            transform: Some((translation: (-35.052135, 33.261875, 29.796068), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
-            camera: Some((yaw: -5.2421737, pitch: -0.18499877)),
+            transform: Some((translation: (42.76174, 24.112242, -51.290867), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
+            camera: Some((yaw: -2.7203207, pitch: -0.47000003)),
         ),
         (
             name: Some(("burg clam v2")),
@@ -34,7 +34,7 @@
             name: Some(("vehicle blue train bentley")),
             transform: Some((translation: (25.859015, 0.54167295, -18.898556), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
             mesh: Some((source: Path("assets/models/vehicle_blue_train_bentley.glb"), framing: r#None, cast_shadows: true, snow_ground: true)),
-            anim: Some((clip: 0, time: 787.8187, playing: false, speed: 1.0, looping: true)),
+            anim: Some((clip: 0, time: 120.41814, playing: false, speed: 1.0, looping: true)),
         ),
         (
             name: Some(("mirror baroque")),
@@ -43,7 +43,7 @@
         ),
         (
             name: Some(("Drum")),
-            transform: Some((translation: (-11.176407, -0.0020008087, -28.30435), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
+            transform: Some((translation: (-13.52368, -0.0020008087, -28.30435), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
             mesh: Some((source: Path("assets/models/Drum.glb"), framing: r#None, cast_shadows: true, snow_ground: true)),
         ),
         (
@@ -55,7 +55,7 @@
             name: Some(("lotus elise")),
             transform: Some((translation: (38.074123, 0.00000000000037125858, 37.55695), rotation: (0.0, 0.0, 0.0, 1.0), scale: (0.2, 0.2, 0.2))),
             mesh: Some((source: Path("assets/models/lotus_elise.glb"), framing: r#None, cast_shadows: true, snow_ground: true)),
-            anim: Some((clip: 0, time: 1361.884, playing: true, speed: 1.0, looping: true)),
+            anim: Some((clip: 0, time: 1889.7819, playing: true, speed: 1.0, looping: true)),
         ),
         (
             name: Some(("sponza")),
@@ -66,7 +66,7 @@
             name: Some(("Paladin")),
             transform: Some((translation: (29.98955, 0.9217993, -20.665836), rotation: (0.0, 0.0, 0.0, 1.0), scale: (0.01, 0.01, 0.01))),
             mesh: Some((source: Path("assets/models/Paladin"), framing: r#None, cast_shadows: true, snow_ground: true)),
-            anim: Some((clip: 11, time: 750.0216, playing: true, speed: 1.0, looping: true)),
+            anim: Some((clip: 11, time: 1280.2946, playing: true, speed: 1.0, looping: true)),
             script: Some((path: "assets/scripts/paladin_controller.rhai")),
         ),
         (
@@ -98,7 +98,7 @@
             shadow_softness: 10.0,
         ),
         sky: (
-            haze: 1.0,
+            haze: 1.85,
             ap_enabled: true,
         ),
         moon: (
@@ -113,6 +113,7 @@
             thickness: 3.0,
             wind_speed: 0.0,
             wind_dir: 0.0,
+            temp_c: -17.1,
         ),
         weather: (
             rain: 0.0,
@@ -129,6 +130,7 @@
             snow_fill_s: 30.0,
             snow_shed_m: 2.5,
             snow_depth: 1.0,
+            pack_age_h: 0.0,
             transition_s: 0.5,
             time_scale: 600.0,
         ),

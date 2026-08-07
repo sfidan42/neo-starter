@@ -2,22 +2,15 @@
     version: 1,
     entities: [
         (
-            name: Some(("World")),
-            mesh: Some((source: Ground, framing: r#None, cast_shadows: false, snow_ground: true)),
-            light: Some((azimuth: 80.0, elevation: 55.0, intensity: 1.0, shadow_softness: 2.5)),
-            ground: Some(()),
-        ),
-        (
             name: Some(("Camera")),
-            transform: Some((translation: (-2.0038874, 1.1028544, 0.876692), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
-            camera: Some((yaw: -47.510036, pitch: -0.19499975)),
+            transform: Some((translation: (4.8189116, 2.2600732, 5.678803), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
+            camera: Some((yaw: -50.79007, pitch: -0.2799999)),
         ),
         (
             name: Some(("vehicle blue train bentley")),
             transform: Some((translation: (0.75906706, 0.0, 1.2980689), rotation: (0.0, -0.99926156, 0.0, 0.038423482), scale: (1.0, 1.0, 1.0))),
             mesh: Some((source: Path("assets/models/vehicle_blue_train_bentley.glb"), framing: r#None, cast_shadows: true, snow_ground: true)),
-            anim: Some((clip: 0, time: 428.71655, playing: true, speed: 1.0, looping: true)),
-            snow: Some((bits: 3)),
+            anim: Some((clip: 0, time: 439.67435, playing: false, speed: 1.0, looping: true)),
         ),
         (
             name: Some(("orion skylark gt")),
@@ -32,10 +25,10 @@
     ],
     world: Some((
         sun: (
-            azimuth: 80.0,
+            azimuth: 35.0,
             elevation: 55.0,
             intensity: 1.0,
-            shadow_softness: 2.5,
+            shadow_softness: 10.0,
         ),
         sky: (
             haze: 1.0,
@@ -53,6 +46,7 @@
             thickness: 3.0,
             wind_speed: 0.0,
             wind_dir: 0.0,
+            temp_c: 5.0,
         ),
         weather: (
             rain: 0.0,
@@ -66,8 +60,20 @@
             puddles: 0.0,
             snow_cover: 1.0,
             snow_haze: 0.4,
+            snow_fill_s: 30.0,
+            snow_shed_m: 2.5,
+            snow_depth: 1.0,
+            pack_age_h: 0.0,
             transition_s: 0.5,
             time_scale: 600.0,
         ),
+        present: Some([
+            Sun,
+            Moon,
+            Sky,
+            Clouds,
+            Snow,
+            Rain,
+        ]),
     )),
 )

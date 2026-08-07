@@ -1,6 +1,14 @@
+// The bundled STARTER project (R12): the repo root is no longer itself a
+// project — `cargo run` from the root shows the launcher, and this folder is
+// the starter content seeded into new projects (and packed into release
+// tarballs). Open it directly in dev with `NEO_PROJECT=starter cargo run`.
+//
+// `level` is the level the editor is on. It is written as you move between
+// levels, so this file changes when you do — that is the point of it being
+// here rather than in a second, per-machine file.
 (
     version: 1,
     name: "neo-starter",
     engine_version: "0.3.0",
-    startup_scene: "assets/scenes/sponza_main.ron",
+    level: Some("assets/levels/terrain_physics_water_demo.ron"),
 )

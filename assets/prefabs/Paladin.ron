@@ -1,11 +1,21 @@
+// A playable character, whole: the art, the animator, the body the
+// simulation pushes around, the shape it occupies, the drive that walks
+// it, the controller that reads WASD, and the camera that follows him.
+//
+// Dropping this into a level gives you something you can press Play and
+// walk around with. Nothing else has to be attached by hand — which is
+// the point of it being a prefab rather than a model.
 (
     version: 1,
     entities: [
         (
             name: Some(("Paladin")),
+            // Identity placement: a prefab spawns where you put it, facing
+            // the way the level faces. Any pose here would be a rotation
+            // every instance had to be corrected out of.
             transform: Some((
-                translation: (-9.7982645, 1.0, -0.3766703),
-                rotation: (0.0, -0.6888619, 0.0, 0.7248926),
+                translation: (0.0, 0.0, 0.0),
+                rotation: (0.0, 0.0, 0.0, 1.0),
                 scale: (1.0, 1.0, 1.0),
             )),
             mesh: Some((
@@ -14,25 +24,84 @@
                 cast_shadows: true,
                 snow_ground: true,
             )),
+            // The pose before Play starts. The controller's init() calls
+            // play("sword and shield idle") the moment it runs, so this is
+            // only what he stands in while you are editing.
             anim: Some((
                 clip: 24,
-                time: 197.93922,
+                time: 0.0,
                 playing: true,
                 speed: 1.0,
                 looping: true,
             )),
+            // Dynamic, so gravity applies and he can be pushed by — and
+            // push — the drums. `upright: true` is what stops a capsule
+            // with legs on it from toppling like a barrel.
+            //
+            // `mass: 0.0` means "work it out from the collider's density",
+            // which is the honest way round: the shape and what it is made
+            // of decide what it weighs.
+            body: Some((
+                kind: Dynamic,
+                mass: 0.0,
+                linear_damping: 0.0,
+                angular_damping: 0.049999997,
+                gravity_scale: 1.0,
+                upright: true,
+                ccd: false,
+            )),
+            // A capsule from the floor to about 1.25 m, which is the
+            // Paladin at his `Unit` framing. Offset by half its height so
+            // its bottom sits on his feet rather than at his waist.
+            collider: Some((
+                shape: Capsule,
+                radius: 0.44,
+                half_height: 0.19,
+                offset: (0.0, 0.6252495, 0.0),
+                friction: 0.7,
+                restitution: 0.0,
+                density: 1000.0,
+                sensor: false,
+            )),
+            // What he is capable of. The controller asks for a FRACTION of
+            // max_speed, so walking and running are relative to this one
+            // number rather than two more to keep in step with it.
+            motor: Some((
+                max_speed: 4.5,
+                acceleration: 20.0,
+                air_control: 0.29999998,
+                jump_height: 1.1,
+                max_slope_deg: 50.0,
+            )),
             script: Some((
                 path: "assets/scripts/paladin_controller.rhai",
             )),
+            // Mixamo art faces +Z; the engine's convention is −Z. Declared
+            // here as well as in the script's init() so the inspector, the
+            // chase camera and face_move all agree before Play is pressed.
+            forward: Some(PosZ),
         ),
         (
             name: Some(("Follow Cam")),
             parent: Some(0),
+            // Its own script: the chase rig places it, this keeps it aimed
+            // and lets the mouse orbit.
+            script: Some((
+                path: "assets/scripts/follow_target.rhai",
+            )),
             chase: Some((
                 distance: 3.5,
-                height: 1.4,
-                fov_y: 0.9773844,
+                height: 1.4000001,
+                fov_y: 1.2391838,
             )),
+            // The ★: Play renders through this one. Set here so a dropped
+            // Paladin is immediately playable — a follow camera you have to
+            // go and promote by hand is a step nobody wants to remember.
+            //
+            // Two Paladins in one level therefore ship two ★s, and the
+            // engine renders through whichever it finds first. Clear the
+            // flag on the one you are not playing.
+            primary_camera: true,
         ),
     ],
 )

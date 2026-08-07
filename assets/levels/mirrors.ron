@@ -2,15 +2,9 @@
     version: 1,
     entities: [
         (
-            name: Some(("World")),
-            mesh: Some((source: Ground, framing: r#None, cast_shadows: false, snow_ground: true)),
-            light: Some((azimuth: 35.0, elevation: 55.0, intensity: 1.0, shadow_softness: 10.0)),
-            ground: Some(()),
-        ),
-        (
             name: Some(("Camera")),
-            transform: Some((translation: (-21.466436, 8.093355, -23.975325), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
-            camera: Some((yaw: 1.5100065, pitch: -0.22500238)),
+            transform: Some((translation: (-27.075457, 7.974356, -26.909277), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
+            camera: Some((yaw: 2.3000107, pitch: 0.1499972)),
         ),
         (
             name: Some(("pine forest")),
@@ -51,6 +45,7 @@
             thickness: 3.0,
             wind_speed: 4.0,
             wind_dir: 20.0,
+            temp_c: 5.0,
         ),
         weather: (
             rain: 0.0,
@@ -64,8 +59,20 @@
             puddles: 0.0,
             snow_cover: 0.0,
             snow_haze: 0.4,
+            snow_fill_s: 30.0,
+            snow_shed_m: 2.5,
+            snow_depth: 1.0,
+            pack_age_h: 48.0,
             transition_s: 8.0,
             time_scale: 1.0,
         ),
+        present: Some([
+            Sun,
+            Moon,
+            Sky,
+            Clouds,
+            Snow,
+            Rain,
+        ]),
     )),
 )
