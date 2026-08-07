@@ -8,11 +8,6 @@
             ground: Some(()),
         ),
         (
-            name: Some(("Camera")),
-            transform: Some((translation: (-2.7133017, 2.3627617, 4.40243), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
-            camera: Some((yaw: -7.354304, pitch: -0.057499673)),
-        ),
-        (
             name: Some(("sponza")),
             transform: Some((translation: (0.0, 0.0, 0.0), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
             mesh: Some((source: Path("assets/models/sponza.glb"), framing: r#None, cast_shadows: true, snow_ground: true)),
@@ -64,6 +59,7 @@
         ),
     ],
     world: Some((
+        camera: (eye: (-2.7133017, 2.3627617, 4.40243), yaw: -7.354304, pitch: -0.057499673, fov: 0.7853982, speed: 2.5),
         sun: (
             azimuth: 35.0,
             elevation: -90.0,

@@ -2,11 +2,6 @@
     version: 1,
     entities: [
         (
-            name: Some(("Camera")),
-            transform: Some((translation: (-3.9267108, 3.5704374, 1.861859), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
-            camera: Some((yaw: -1.0488167, pitch: -0.20227763)),
-        ),
-        (
             name: Some(("burg clam v2")),
             transform: Some((translation: (0.0, 0.0, 0.0), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
             mesh: Some((source: Path("assets/models/burg_clam_v2.glb"), framing: r#None, cast_shadows: true, snow_ground: true)),
@@ -23,6 +18,7 @@
         ),
     ],
     world: Some((
+        camera: (eye: (-3.9267108, 3.5704374, 1.861859), yaw: -1.0488167, pitch: -0.20227763, fov: 0.7853982, speed: 2.5),
         sun: (
             azimuth: 293.4,
             elevation: 44.099995,

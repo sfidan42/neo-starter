@@ -2,28 +2,24 @@
     version: 1,
     entities: [
         (
-            name: Some(("Camera")),
-            transform: Some((translation: (27.229765, 18.40992, 21.766745), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
-            camera: Some((yaw: -6.945023, pitch: -0.74499947)),
-        ),
-        (
             name: Some(("pine forest")),
             transform: Some((translation: (-0.11534977, 0.5115938, 0.0), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
         ),
         (
             name: Some(("obj1_1")),
             transform: Some((translation: (0.0, 0.0, 0.0), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 0.9999999, 0.9999999))),
-            parent: Some(1),
+            parent: Some(0),
             mesh: Some((source: Path("assets/models/pine_forest.glb"), framing: r#None, cast_shadows: true, snow_ground: true, part: Some(4))),
         ),
         (
             name: Some(("pine1_0")),
             transform: Some((translation: (0.0, 0.0, 0.0), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 0.9999999, 0.9999999))),
-            parent: Some(1),
+            parent: Some(0),
             mesh: Some((source: Path("assets/models/pine_forest.glb"), framing: r#None, cast_shadows: true, snow_ground: true, part: Some(7))),
         ),
     ],
     world: Some((
+        camera: (eye: (27.229765, 18.40992, 21.766745), yaw: -6.945023, pitch: -0.74499947, fov: 0.7853982, speed: 2.5),
         sun: (
             azimuth: 80.0,
             elevation: 55.0,

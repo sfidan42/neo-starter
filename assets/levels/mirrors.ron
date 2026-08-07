@@ -2,11 +2,6 @@
     version: 1,
     entities: [
         (
-            name: Some(("Camera")),
-            transform: Some((translation: (-27.075457, 7.974356, -26.909277), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
-            camera: Some((yaw: 2.3000107, pitch: 0.1499972)),
-        ),
-        (
             name: Some(("pine forest")),
             transform: Some((translation: (0.0, 0.0, 0.0), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
             mesh: Some((source: Path("assets/models/pine_forest.glb"), framing: r#None, cast_shadows: true, snow_ground: true)),
@@ -23,6 +18,7 @@
         ),
     ],
     world: Some((
+        camera: (eye: (-27.075457, 7.974356, -26.909277), yaw: 2.3000107, pitch: 0.1499972, fov: 0.7853982, speed: 2.5),
         sun: (
             azimuth: 35.0,
             elevation: 55.0,

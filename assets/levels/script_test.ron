@@ -2,11 +2,6 @@
     version: 1,
     entities: [
         (
-            name: Some(("Camera")),
-            transform: Some((translation: (0.0, 2.5, 6.0), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
-            camera: Some((yaw: -0.037500005, pitch: 0.08750001)),
-        ),
-        (
             name: Some(("Spinner (scripted)")),
             transform: Some((translation: (0.0, 1.2, 0.0), rotation: (0.0, 0.0, 0.0, 1.0), scale: (2.5, 2.5, 2.5))),
             mesh: Some((source: Path("assets/models/Drum.glb"), framing: Unit, cast_shadows: true, snow_ground: false)),
@@ -14,13 +9,14 @@
         ),
         (
             name: Some(("Follow Cam")),
-            parent: Some(1),
+            parent: Some(0),
             script: Some((path: "assets/scripts/follow_target.rhai")),
             chase: Some((distance: 5.0, height: 2.0, fov_y: 0.7853982)),
             primary_camera: true,
         ),
     ],
     world: Some((
+        camera: (eye: (0.0, 2.5, 6.0), yaw: -0.037500005, pitch: 0.08750001, fov: 0.7853982, speed: 2.5),
         sun: (
             azimuth: 80.0,
             elevation: 55.0,

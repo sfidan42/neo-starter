@@ -2,11 +2,6 @@
     version: 1,
     entities: [
         (
-            name: Some(("Camera")),
-            transform: Some((translation: (-9.224072, 4.5812273, 7.187776), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
-            camera: Some((yaw: -4.6975207, pitch: 0.15250099)),
-        ),
-        (
             name: Some(("Paladin")),
             transform: Some((translation: (4.2, 1.0, 0.0), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
             mesh: Some((source: Path("assets/models/Paladin"), framing: Unit, cast_shadows: true, snow_ground: true)),
@@ -34,6 +29,7 @@
         ),
     ],
     world: Some((
+        camera: (eye: (-9.224072, 4.5812273, 7.187776), yaw: -4.6975207, pitch: 0.15250099, fov: 0.7853982, speed: 2.5),
         sun: (
             azimuth: 35.0,
             elevation: 55.0,

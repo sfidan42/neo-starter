@@ -2,11 +2,6 @@
     version: 1,
     entities: [
         (
-            name: Some(("Camera")),
-            transform: Some((translation: (0.0, 8.0, 16.0), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
-            camera: Some((yaw: 0.0, pitch: -0.45, fov: 0.7853982)),
-        ),
-        (
             name: Some(("Drum 0x0")),
             transform: Some((translation: (-7.0, 0.0, -7.0), rotation: (0.0, 0.0, 0.0, 1.0), scale: (0.1, 0.1, 0.1))),
             mesh: Some((source: Path("assets/models/Drum.glb"), framing: r#None, cast_shadows: true, snow_ground: true)),
@@ -188,6 +183,7 @@
         ),
     ],
     world: Some((
+        camera: (eye: (0.0, 8.0, 16.0), yaw: 0.0, pitch: -0.45, fov: 0.7853982, speed: 2.5),
         sun: (
             azimuth: 80.0,
             elevation: 55.0,

@@ -2,11 +2,6 @@
     version: 1,
     entities: [
         (
-            name: Some(("Camera")),
-            transform: Some((translation: (42.453262, 47.866463, -56.566967), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
-            camera: Some((yaw: -10.1380005, pitch: -0.74)),
-        ),
-        (
             name: Some(("car1")),
             transform: Some((translation: (-180.08882, 42.538857, 25.09689), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
             mesh: Some((source: Path("assets/models/vehicle_blue_train_bentley.glb"), framing: r#None, cast_shadows: true, snow_ground: false)),
@@ -38,6 +33,7 @@
         ),
     ],
     world: Some((
+        camera: (eye: (42.453262, 47.866463, -56.566967), yaw: -10.1380005, pitch: -0.74, fov: 0.7853982, speed: 2.5),
         sun: (
             azimuth: 35.0,
             elevation: 55.0,

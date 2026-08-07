@@ -2,11 +2,6 @@
     version: 1,
     entities: [
         (
-            name: Some(("Camera")),
-            transform: Some((translation: (36.185497, 22.76478, -0.4437389), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
-            camera: Some((yaw: -4.6800103, pitch: -0.6974997)),
-        ),
-        (
             name: Some(("Paladin")),
             transform: Some((translation: (40.43125, 19.184114, 0.0), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
             mesh: Some((source: Path("assets/models/Paladin"), framing: Unit, cast_shadows: true, snow_ground: true)),
@@ -31,13 +26,14 @@
         ),
         (
             name: Some(("Follow Cam")),
-            parent: Some(1),
+            parent: Some(0),
             script: Some((path: "assets/scripts/follow_target.rhai")),
             chase: Some((distance: 3.5, height: 1.4000001, fov_y: 0.9773844)),
             primary_camera: true,
         ),
     ],
     world: Some((
+        camera: (eye: (36.185497, 22.76478, -0.4437389), yaw: -4.6800103, pitch: -0.6974997, fov: 0.7853982, speed: 2.5),
         sun: (
             azimuth: 35.0,
             elevation: 55.0,

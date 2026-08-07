@@ -8,11 +8,6 @@
             ground: Some(()),
         ),
         (
-            name: Some(("Camera")),
-            transform: Some((translation: (-9.693054, 17.370031, -0.124353506), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
-            camera: Some((yaw: -4.715011, pitch: -0.8525003)),
-        ),
-        (
             name: Some(("Paladin")),
             transform: Some((translation: (4.2, 1.0, 0.0), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
             mesh: Some((source: Path("assets/models/Paladin"), framing: Unit, cast_shadows: true, snow_ground: false)),
@@ -40,6 +35,7 @@
         ),
     ],
     world: Some((
+        camera: (eye: (-9.693054, 17.370031, -0.124353506), yaw: -4.715011, pitch: -0.8525003, fov: 0.7853982, speed: 2.5),
         sun_azimuth: 80.0,
         sun_elevation: 21.599997,
         sun_intensity: 1.0,

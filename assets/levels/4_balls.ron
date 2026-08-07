@@ -32,20 +32,22 @@
             name: Some(("vehicle blue train bentley")),
             transform: Some((translation: (0.0, 0.0, 0.0), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
             mesh: Some((source: Path("assets/models/vehicle_blue_train_bentley.glb"), framing: r#None, cast_shadows: true, snow_ground: true)),
-            anim: Some((clip: 0, time: 362.84818, playing: true, speed: 1.0, looping: true)),
+            anim: Some((clip: 0, time: 369.71112, playing: true, speed: 1.0, looping: true)),
             snow: Some((bits: 3)),
         ),
         (
             name: Some(("Paladin")),
             transform: Some((translation: (5.799977, 0.11817312, 0.0), rotation: (0.0, -0.6888619, 0.0, 0.7248926), scale: (1.0, 1.0, 1.0))),
             mesh: Some((source: Path("assets/models/Paladin"), framing: Unit, cast_shadows: true, snow_ground: true)),
-            anim: Some((clip: 24, time: 469.87488, playing: true, speed: 1.0, looping: true)),
+            anim: Some((clip: 24, time: 476.86475, playing: true, speed: 1.0, looping: true)),
             script: Some((path: "assets/scripts/paladin_controller.rhai")),
         ),
         (
             name: Some(("Follow Cam")),
-            parent: Some(7),
+            parent: Some(6),
+            script: Some((path: "assets/scripts/follow_target.rhai")),
             chase: Some((distance: 3.5, height: 1.4, fov_y: 0.9773844)),
+            primary_camera: true,
         ),
         (
             name: Some(("light bulb")),
@@ -57,7 +59,7 @@
         (
             name: Some(("Point 13")),
             transform: Some((translation: (0.0, 0.7618119, 0.0), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
-            parent: Some(9),
+            parent: Some(8),
             point_light: Some((color: (0.83, 0.73499995, 0.45999998), intensity: 26.474346, range: 1.6556557, cast_shadows: false)),
             node: Some(1),
         ),
@@ -71,7 +73,7 @@
         (
             name: Some(("Point 13")),
             transform: Some((translation: (0.0, 0.7618119, 0.0), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
-            parent: Some(11),
+            parent: Some(10),
             point_light: Some((color: (0.83, 0.73499995, 0.45999998), intensity: 26.474346, range: 1.6556557, cast_shadows: false)),
             node: Some(1),
         ),
@@ -85,12 +87,19 @@
         (
             name: Some(("Point 13")),
             transform: Some((translation: (0.0, 0.7618119, 0.0), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
-            parent: Some(13),
+            parent: Some(12),
             point_light: Some((color: (0.83, 0.73499995, 0.45999998), intensity: 26.474346, range: 1.6556557, cast_shadows: false)),
             node: Some(1),
         ),
     ],
     world: Some((
+        camera: (
+            eye: (0.0, 1.5, 3.5),
+            yaw: 0.5425002,
+            pitch: 0.0349998,
+            fov: 0.7853982,
+            speed: 2.5,
+        ),
         sun: (
             azimuth: 80.0,
             elevation: -2.7000022,
@@ -113,6 +122,7 @@
             thickness: 3.0,
             wind_speed: 2.0,
             wind_dir: 20.0,
+            temp_c: 5.0,
         ),
         weather: (
             rain: 0.0,
@@ -129,8 +139,17 @@
             snow_fill_s: 30.0,
             snow_shed_m: 2.5,
             snow_depth: 1.0,
+            pack_age_h: 48.0,
             transition_s: 8.0,
             time_scale: 1.0,
         ),
+        present: Some([
+            Sun,
+            Moon,
+            Sky,
+            Clouds,
+            Snow,
+            Rain,
+        ]),
     )),
 )

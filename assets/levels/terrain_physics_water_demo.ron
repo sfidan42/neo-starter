@@ -2,15 +2,10 @@
     version: 1,
     entities: [
         (
-            name: Some(("Camera")),
-            transform: Some((translation: (-177.88472, 71.06729, -34.15139), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
-            camera: Some((yaw: 7.8304763, pitch: -0.49000412, fov: 0.7853982)),
-        ),
-        (
             name: Some(("Paladin")),
             transform: Some((translation: (-31.05, 10.295661, -55.0), rotation: (0.0, 0.8114569, 0.0, 0.5844122), scale: (0.9999999, 1.0, 0.9999999))),
             mesh: Some((source: Path("assets/models/Paladin"), framing: Unit, cast_shadows: true, snow_ground: true)),
-            anim: Some((clip: 24, time: 2932.0823, playing: true, speed: 1.0, looping: true)),
+            anim: Some((clip: 24, time: 2949.8848, playing: true, speed: 1.0, looping: true)),
             body: Some((kind: Dynamic, mass: 0.0, linear_damping: 0.0, angular_damping: 0.049999997, gravity_scale: 1.0, upright: true, ccd: false)),
             collider: Some((shape: Capsule, radius: 0.35, half_height: 0.59999996, offset: (0.0, 0.95, 0.0), friction: 0.7, restitution: 0.0, density: 2000.0, sensor: false)),
             motor: Some((max_speed: 4.5, acceleration: 20.0, air_control: 0.29999998, jump_height: 1.1, max_slope_deg: 50.0)),
@@ -20,7 +15,7 @@
         ),
         (
             name: Some(("Follow Cam")),
-            parent: Some(1),
+            parent: Some(0),
             script: Some((path: "assets/scripts/follow_target.rhai")),
             chase: Some((distance: 3.5, height: 1.4000001, fov_y: 1.2391838)),
             primary_camera: true,
@@ -58,6 +53,13 @@
         ),
     ],
     world: Some((
+        camera: (
+            eye: (-177.88472, 71.06729, -34.15139),
+            yaw: 7.8304763,
+            pitch: -0.49000412,
+            fov: 0.7853982,
+            speed: 30.0,
+        ),
         sun: (
             azimuth: 35.0,
             elevation: 55.0,

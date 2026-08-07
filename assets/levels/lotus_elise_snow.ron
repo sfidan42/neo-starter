@@ -2,11 +2,6 @@
     version: 1,
     entities: [
         (
-            name: Some(("Camera")),
-            transform: Some((translation: (23.921698, 47.59675, -16.783598), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
-            camera: Some((yaw: -14.647481, pitch: -0.40250015)),
-        ),
-        (
             name: Some(("lotus elise")),
             transform: Some((translation: (0.0, 0.0, 0.0), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
             mesh: Some((source: Path("assets/models/lotus_elise.glb"), framing: r#None, cast_shadows: true, snow_ground: true)),
@@ -14,6 +9,7 @@
         ),
     ],
     world: Some((
+        camera: (eye: (23.921698, 47.59675, -16.783598), yaw: -14.647481, pitch: -0.40250015, fov: 0.7853982, speed: 2.5),
         sun: (
             azimuth: 35.0,
             elevation: 55.0,
