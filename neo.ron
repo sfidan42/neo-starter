@@ -10,5 +10,5 @@
     version: 1,
     name: "neo-starter",
     engine_version: "0.3.0",
-    level: Some("assets/levels/script_test.ron"),
+    level: Some("assets/levels/terrain_physics_water_demo.ron"),
 )

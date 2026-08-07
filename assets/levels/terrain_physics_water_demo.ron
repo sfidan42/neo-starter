@@ -5,7 +5,7 @@
             name: Some(("Paladin")),
             transform: Some((translation: (-31.05, 10.295661, -55.0), rotation: (0.0, 0.8114569, 0.0, 0.5844122), scale: (0.9999999, 1.0, 0.9999999))),
             mesh: Some((source: Path("assets/models/Paladin"), framing: Unit, cast_shadows: true, snow_ground: true)),
-            anim: Some((clip: 24, time: 2949.8848, playing: true, speed: 1.0, looping: true)),
+            anim: Some((clip: 24, time: 2985.8916, playing: true, speed: 1.0, looping: true)),
             body: Some((kind: Dynamic, mass: 0.0, linear_damping: 0.0, angular_damping: 0.049999997, gravity_scale: 1.0, upright: true, ccd: false)),
             collider: Some((shape: Capsule, radius: 0.35, half_height: 0.59999996, offset: (0.0, 0.95, 0.0), friction: 0.7, restitution: 0.0, density: 2000.0, sensor: false)),
             motor: Some((max_speed: 4.5, acceleration: 20.0, air_control: 0.29999998, jump_height: 1.1, max_slope_deg: 50.0)),
@@ -43,7 +43,7 @@
         ),
         (
             name: Some(("Lake 12")),
-            transform: Some((translation: (-47.574776, 10.4518, -3.3838537), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
+            transform: Some((translation: (-64.540985, 11.425186, 1.4022131), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
             lake: Some((radius: 7.0, depth: 10.0, clarity: 20.5)),
         ),
         (
@@ -54,9 +54,9 @@
     ],
     world: Some((
         camera: (
-            eye: (-177.88472, 71.06729, -34.15139),
-            yaw: 7.8304763,
-            pitch: -0.49000412,
+            eye: (-91.02923, 58.064556, -53.537903),
+            yaw: 8.992964,
+            pitch: -0.9475035,
             fov: 0.7853982,
             speed: 30.0,
         ),
