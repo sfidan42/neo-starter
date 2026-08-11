@@ -3,9 +3,9 @@
     entities: [
         (
             name: Some(("Paladin")),
-            transform: Some((translation: (-31.05, 10.295661, -55.0), rotation: (0.0, 0.8114569, 0.0, 0.5844122), scale: (0.9999999, 1.0, 0.9999999))),
+            transform: Some((translation: (-34.62836, 13.371708, 14.004091), rotation: (0.0, 0.8114569, 0.0, 0.5844123), scale: (0.99999976, 1.0, 0.99999976))),
             mesh: Some((source: Path("assets/models/Paladin"), framing: Unit, cast_shadows: true, snow_ground: true)),
-            anim: Some((clip: 24, time: 2985.8916, playing: true, speed: 1.0, looping: true)),
+            anim: Some((clip: 24, time: 3145.9685, playing: true, speed: 1.0, looping: true)),
             body: Some((kind: Dynamic, mass: 0.0, linear_damping: 0.0, angular_damping: 0.049999997, gravity_scale: 1.0, upright: true, ccd: false)),
             collider: Some((shape: Capsule, radius: 0.35, half_height: 0.59999996, offset: (0.0, 0.95, 0.0), friction: 0.7, restitution: 0.0, density: 2000.0, sensor: false)),
             motor: Some((max_speed: 4.5, acceleration: 20.0, air_control: 0.29999998, jump_height: 1.1, max_slope_deg: 50.0)),
@@ -43,20 +43,20 @@
         ),
         (
             name: Some(("Lake 12")),
-            transform: Some((translation: (-64.540985, 11.425186, 1.4022131), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
-            lake: Some((radius: 7.0, depth: 10.0, clarity: 20.5)),
+            transform: Some((translation: (-88.371376, 6.0314026, -19.828577), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
+            lake: Some((radius: 25.0, depth: 10.0, clarity: 20.5)),
         ),
         (
             name: Some(("River 13")),
             transform: Some((translation: (-49.90652, 6.606172, -35.46224), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
-            river: Some((points: [(0.0, 0.0), (9.184402, 22.173107)], width: 5.0, depth: 1.5, widen: 2.1, clarity: 3.0)),
+            river: Some((points: [(41.856262, 79.621185), (-15.85873, 82.6177), (-31.377407, 28.35156)], width: 5.0, depth: 1.5, widen: 2.1, clarity: 3.0)),
         ),
     ],
     world: Some((
         camera: (
-            eye: (-91.02923, 58.064556, -53.537903),
-            yaw: 8.992964,
-            pitch: -0.9475035,
+            eye: (-129.35686, 61.062725, 77.09447),
+            yaw: 7.040392,
+            pitch: -0.40750438,
             fov: 0.7853982,
             speed: 30.0,
         ),
@@ -99,7 +99,7 @@
             snow_fill_s: 30.0,
             snow_shed_m: 2.5,
             snow_depth: 1.0,
-            pack_age_h: 48.0,
+            pack_age_h: 0.0009765103,
             transition_s: 0.5,
             time_scale: 600.0,
         ),
