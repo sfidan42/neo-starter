@@ -3,9 +3,9 @@
     entities: [
         (
             name: Some(("Paladin")),
-            transform: Some((translation: (-34.62836, 13.371708, 14.004091), rotation: (0.0, 0.8114569, 0.0, 0.5844123), scale: (0.99999976, 1.0, 0.99999976))),
+            transform: Some((translation: (27.14178, -4.8026423, 5.8823953), rotation: (0.0, -0.55826527, 0.0, 0.82966256), scale: (0.9999996, 1.0, 0.9999996))),
             mesh: Some((source: Path("assets/models/Paladin"), framing: Unit, cast_shadows: true, snow_ground: true)),
-            anim: Some((clip: 24, time: 3145.9685, playing: true, speed: 1.0, looping: true)),
+            anim: Some((clip: 24, time: 5251.738, playing: true, speed: 1.0, looping: true)),
             body: Some((kind: Dynamic, mass: 0.0, linear_damping: 0.0, angular_damping: 0.049999997, gravity_scale: 1.0, upright: true, ccd: false)),
             collider: Some((shape: Capsule, radius: 0.35, half_height: 0.59999996, offset: (0.0, 0.95, 0.0), friction: 0.7, restitution: 0.0, density: 2000.0, sensor: false)),
             motor: Some((max_speed: 4.5, acceleration: 20.0, air_control: 0.29999998, jump_height: 1.1, max_slope_deg: 50.0)),
@@ -43,20 +43,20 @@
         ),
         (
             name: Some(("Lake 12")),
-            transform: Some((translation: (-88.371376, 6.0314026, -19.828577), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
-            lake: Some((radius: 25.0, depth: 10.0, clarity: 20.5)),
+            transform: Some((translation: (-86.385574, -39.37132, -1.1392087), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
+            lake: Some((radius: 30.0, points: [], depth: 38.0, raised: -30.999998, dig: 1.0, clarity: 20.5)),
         ),
         (
             name: Some(("River 13")),
             transform: Some((translation: (-49.90652, 6.606172, -35.46224), rotation: (0.0, 0.0, 0.0, 1.0), scale: (1.0, 1.0, 1.0))),
-            river: Some((points: [(41.856262, 79.621185), (-15.85873, 82.6177), (-31.377407, 28.35156)], width: 5.0, depth: 1.5, widen: 2.1, clarity: 3.0)),
+            river: Some((points: [(-43.013195, 123.05588), (10.281776, 112.19003), (29.015018, 69.036255), (-18.507465, 51.722916)], width: 5.0, depth: 2.0, widen: 1.0, clarity: 3.0)),
         ),
     ],
     world: Some((
         camera: (
-            eye: (-129.35686, 61.062725, 77.09447),
-            yaw: 7.040392,
-            pitch: -0.40750438,
+            eye: (41.697216, 10.074411, -19.761312),
+            yaw: 4.096054,
+            pitch: -0.25398695,
             fov: 0.7853982,
             speed: 30.0,
         ),
@@ -99,7 +99,7 @@
             snow_fill_s: 30.0,
             snow_shed_m: 2.5,
             snow_depth: 1.0,
-            pack_age_h: 0.0009765103,
+            pack_age_h: 0.00078441534,
             transition_s: 0.5,
             time_scale: 600.0,
         ),
@@ -112,7 +112,7 @@
             Rain,
         ]),
         terrain: Some((
-            points: [(position: (-22.781563, 5.665283, -19.323042), flat: 0.0, roughness: 0.3, surface: 1), (position: (24.019958, 0.95912087, -30.059542), flat: 0.0, roughness: 0.2, surface: 1), (position: (17.138712, 25.0, 31.685484), flat: 0.0, roughness: 0.35, surface: 0), (position: (-24.504284, 16.70165, 24.621489), flat: 0.0, roughness: 0.5, surface: 0), (position: (-2.093804, -4.938713, 9.293928), flat: 0.0, roughness: 0.65, surface: 1), (position: (42.741135, -10.0871315, 26.430933), flat: 0.0, roughness: 0.35, surface: 1), (position: (-2.7684927, 25.0, 31.245762), flat: 0.0, roughness: 0.35, surface: 0), (position: (-86.12963, -93.575775, -148.79057), flat: 0.0, roughness: 0.35, surface: 0), (position: (-58.0, 8.6, -68.0), flat: 0.0, roughness: 0.35, surface: 0)],
+            points: [(position: (-22.781563, 5.665283, -19.323042), flat: 0.0, roughness: 0.3, surface: 1), (position: (-55.539497, -9.663308, -19.54946), flat: 0.0, roughness: 0.2, surface: 1), (position: (17.138712, 25.0, 31.685484), flat: 0.0, roughness: 0.35, surface: 0), (position: (-54.254017, 26.70222, 15.8432865), flat: 0.0, roughness: 0.5, surface: 0), (position: (-2.093804, -4.938713, 9.293928), flat: 0.0, roughness: 0.65, surface: 1), (position: (42.741135, -10.0871315, 26.430933), flat: 0.0, roughness: 0.35, surface: 1), (position: (-21.57669, 24.386133, 21.735155), flat: 0.0, roughness: 0.35, surface: 0), (position: (-86.12963, -93.575775, -148.79057), flat: 0.0, roughness: 0.35, surface: 0), (position: (-87.84139, 8.6, -78.990265), flat: 0.0, roughness: 0.35, surface: 0), (position: (-78.97136, 62.491936, 66.295105), flat: 0.0, roughness: 0.35, surface: 0)],
             margin: 30.0,
             detail: 1.7,
             grain: 10.0,
@@ -128,7 +128,7 @@
             tile: 2.5,
         )),
         ocean: Some((
-            level: 5.000003,
+            level: -44.999996,
             height: 1.1999999,
             length: 105.0,
             steepness: 0.48,
