@@ -3,4 +3,5 @@ assets/.compressed/
 assets/.thumbnails/
 assets/.snow_bake/
 assets/.colliders/
+assets/.models/
 target/
